@@ -6,15 +6,15 @@
 /*   By: yrigny <yrigny@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 12:09:10 by yrigny            #+#    #+#             */
-/*   Updated: 2024/10/04 19:08:39 by yrigny           ###   ########.fr       */
+/*   Updated: 2024/10/07 16:30:41 by yrigny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
-#define GREEN "\033[1;32m"
-#define FADE "\033[2m"
-#define NONE "\033[0m"
+#define GREEN "\e[1;32m"
+#define FADE "\e[2m"
+#define NONE "\e[0m"
 
 int	main()
 {
