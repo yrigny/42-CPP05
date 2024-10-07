@@ -5,30 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrigny <yrigny@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 14:59:17 by yrigny            #+#    #+#             */
-/*   Updated: 2024/10/07 18:54:49 by yrigny           ###   ########.fr       */
+/*   Created: 2024/10/07 18:44:18 by yrigny            #+#    #+#             */
+/*   Updated: 2024/10/07 19:58:36 by yrigny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #define GREEN "\e[1;32m"
 #define FADE "\e[2m"
 #define NONE "\e[0m"
 
 int	main(void)
 {
-	std::cout << std::endl << GREEN "Test default constructor with no attributes given" NONE << std::endl;
-	Form	no_name;
+	std::cout << std::endl << GREEN "Test default constructor with no argument" NONE << std::endl;
+	ShrubberyCreationForm	no_name;
 
-	std::cout << std::endl << GREEN "Test default constructor with name and grade attributes given" NONE << std::endl;
-	Form	a("Form A", 100, 120);
-
-	std::cout << std::endl << GREEN "Test default constructor with all attributes given" NONE << std::endl;
-	Form	b("Form B", 60, 80, true);
+	std::cout << std::endl << GREEN "Test default constructor with target given" NONE << std::endl;
+	ShrubberyCreationForm	a("home");
 
 	std::cout << std::endl << GREEN "Test copy constructor" NONE << std::endl;
-	Form	b_copy(b);
+	ShrubberyCreationForm	b(a);
 
 	std::cout << std::endl << GREEN "Test copy assignment operator" NONE << std::endl;
 	b = no_name;
@@ -38,7 +36,7 @@ int	main(void)
 	std::cout << FADE "Try to create Form C with grade 0" NONE << std::endl;
 	try
 	{
-		Form	c("Form C", 0, 150, false);
+		ShrubberyCreationForm	c("company");
 	}
 	catch (std::exception& e)
 	{
@@ -49,7 +47,7 @@ int	main(void)
 	std::cout << FADE "Try to create Form with grade 151" NONE << std::endl;
 	try
 	{
-		Form	d("Form D", 0, 200, false);
+		ShrubberyCreationForm	d("garden");
 	}
 	catch (std::exception& e)
 	{
@@ -81,11 +79,11 @@ int	main(void)
 	}
 	std::cout << FADE "After: " NONE << a << std::endl;
 	
-	std::cout << FADE "Try to make a Bureaucrat sign a signed Form within his grade" NONE << std::endl;
+	std::cout << FADE "Try to make a Bureaucrat execute a signed Form within his grade" NONE << std::endl;
 	try
 	{
-		amber.signForm(a);
-		a.beSigned(amber);
+		amber.executeForm(a);
+		a.execute(amber);
 	}
 	catch (std::exception& e)
 	{
