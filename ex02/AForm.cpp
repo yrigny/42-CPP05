@@ -49,7 +49,7 @@ is_signed(src.getSignedStatus())
 	<< ", sign grade " << this->grade_to_sign
 	<< ", execution grade " << this->grade_to_exec 
 	<< ", signed status: " << this->is_signed
-	<< " is created with copy constructor" << std::endl;
+	<< ", is created with copy constructor" << std::endl;
 }
 
 AForm::~AForm()
@@ -58,7 +58,7 @@ AForm::~AForm()
 	<< ", sign grade " << this->grade_to_sign
 	<< ", execution grade " << this->grade_to_exec 
 	<< ", signed status: " << this->is_signed
-	<< " is destructed" << std::endl;
+	<< ", is destructed" << std::endl;
 }
 
 AForm&	AForm::operator=(const AForm& src)

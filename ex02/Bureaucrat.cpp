@@ -6,7 +6,7 @@
 /*   By: yrigny <yrigny@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:34:40 by yrigny            #+#    #+#             */
-/*   Updated: 2024/10/07 19:49:04 by yrigny           ###   ########.fr       */
+/*   Updated: 2024/10/08 14:52:43 by yrigny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,13 @@ Bureaucrat::~Bureaucrat()
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& src)
 {
-	std::cout << "Bureaucrat " << this->name << " with grade " << this->grade << " is assigned grade " << src.getGrade() << " with copy assignment operator" << std::endl;
-	this->grade = src.getGrade();
+	if (this != &src)
+	{
+		std::cout << "Bureaucrat " << this->name << " with grade " << this->grade
+		<< " is assigned grade " << src.getGrade()
+		<< " with copy assignment operator" << std::endl;
+		this->grade = src.getGrade();
+	}
 	return (*this);
 }
 
@@ -73,35 +78,35 @@ void	Bureaucrat::decrementGrade()
 void	Bureaucrat::signForm(AForm& form)
 {
 	if (form.getSignedStatus() == true)
-		std::cout << this->getName() << " couldn't sign " << form.getName()
+		std::cout << "⛔ Bureaucrat " << this->getName() << " couldn't sign " << form.getName()
 		<< " because the form is already signed" << std::endl;
 	else if (this->grade > form.getGradeToSign())
-		std::cout << this->getName() << " couldn't sign " << form.getName()
+		std::cout << "⛔ Bureaucrat " << this->getName() << " couldn't sign " << form.getName()
 		<< " because the bureaucreat's grade is lower than the form's sign grade" << std::endl;
 	else
-		std::cout << this->getName() << " signed " << form.getName() << std::endl;
+		std::cout << "✅ Bureaucrat " << this->getName() << " signed " << form.getName() << std::endl;
 }
 
 void	Bureaucrat::executeForm(AForm& form)
 {
 	if (form.getSignedStatus() == false)
-		std::cout << this->getName() << " couldn't execute " << form.getName()
+		std::cout << "⛔ Bureaucrat " << this->getName() << " could't execute " << form.getName()
 		<< " because the form is not signed" << std::endl;
 	else if (this->grade > form.getGradeToExec())
-		std::cout << this->getName() << " couldn't execute " << form.getName()
-		<< " because the bureaucreat's grade is lower than the form's execution grade" << std::endl;
+		std::cout << "⛔ Bureaucrat " << this->getName() << " couldn't execute " << form.getName()
+		<< " because the bureaucreat's grade is lower than the form's execute grade" << std::endl;
 	else
-		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+		std::cout << "✅ Bureaucrat " << this->getName() << " executed " << form.getName() << std::endl;
 }
 
 const char*	Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Error: Grade too high. Valid range for grade is [1,150].");
+	return ("Error: Grade too high. Valid range for grade is [1,150]");
 }
 
 const char*	Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Error: Grade too low. Valid range for grade is [1,150].");
+	return ("Error: Grade too low. Valid range for grade is [1,150]");
 }
 
 std::ostream&	operator<<(std::ostream& out, const Bureaucrat& bureaucrat)
