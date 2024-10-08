@@ -6,7 +6,7 @@
 /*   By: yrigny <yrigny@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 15:47:56 by yrigny            #+#    #+#             */
-/*   Updated: 2024/10/08 16:16:36 by yrigny           ###   ########.fr       */
+/*   Updated: 2024/10/08 22:20:00 by yrigny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,12 @@ t_form_type	formType(const std::string s)
 		"robotomy request",
 		"presidential pardon"
 	};
+	std::string	s_lower = "";
+	for (unsigned long i = 0; i < s.length(); i++)
+		s_lower += std::tolower(s[i]);
 	for (int i = 0; i < 3; i++)
 	{
-		if (s == arr_forms[i])
+		if (s_lower == arr_forms[i])
 			return (static_cast<t_form_type>(i));
 	}
 	return (NONE);
