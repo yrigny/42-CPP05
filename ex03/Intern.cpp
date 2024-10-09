@@ -6,7 +6,7 @@
 /*   By: yrigny <yrigny@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 15:47:56 by yrigny            #+#    #+#             */
-/*   Updated: 2024/10/08 22:20:00 by yrigny           ###   ########.fr       */
+/*   Updated: 2024/10/09 16:45:41 by yrigny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,25 +37,21 @@ Intern&	Intern::operator=(const Intern& src)
 
 AForm*	Intern::makeForm(const std::string name, const std::string target)
 {
-	AForm*	form;
-	switch (formType(name))
+	AForm*			form;
+	t_form_type		form_type = formType(name);
+	t_form_creator	creator_arr[] =
 	{
-		case SHRUBBERY_CREATION:
-			form = new ShrubberyCreationForm(target);
-			break;
-		
-		case ROBOTOMY_REQUEST:
-			form = new RobotomyRequestForm(target);
-			break;
-
-		case PRESIDENTIAL_PARDON:
-			form = new PresidentialPardonForm(target);
-			break;
-
-		default:
-			std::cout << "Error: Form " << name << " doesn't exist" << std::endl;
-			return (NULL);
+		&createShrubberyCreation,
+		&createRobotomyRequest,
+		&createPresidentialPardon
+	};
+	if (form_type == NONE)
+	{
+		std::cout << "Intern couldn't create nonexisting form "
+		<< form->getName() << std::endl;
+		return NULL;
 	}
+	form = creator_arr[form_type](target);
 	std::cout << "Intern creates " << form->getName() << std::endl;
 	return (form);
 }
@@ -77,4 +73,19 @@ t_form_type	formType(const std::string s)
 			return (static_cast<t_form_type>(i));
 	}
 	return (NONE);
+}
+
+AForm*	createShrubberyCreation(const std::string target)
+{
+	return new ShrubberyCreationForm(target);
+}
+
+AForm*	createRobotomyRequest(const std::string target)
+{
+	return new RobotomyRequestForm(target);
+}
+
+AForm*	createPresidentialPardon(const std::string target)
+{
+	return new PresidentialPardonForm(target);
 }

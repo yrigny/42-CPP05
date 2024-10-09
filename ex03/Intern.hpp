@@ -6,7 +6,7 @@
 /*   By: yrigny <yrigny@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 15:41:07 by yrigny            #+#    #+#             */
-/*   Updated: 2024/10/08 16:16:26 by yrigny           ###   ########.fr       */
+/*   Updated: 2024/10/09 16:36:28 by yrigny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef enum
 	NONE,
 }	t_form_type;
 
+typedef AForm* (*t_form_creator)(const std::string);
+
 class AForm;
 class ShrubberyCreationForm;
 class RobotomyRequestForm;
@@ -44,5 +46,8 @@ class Intern
 };
 
 t_form_type	formType(const std::string s);
+AForm*		createShrubberyCreation(const std::string target);
+AForm*		createRobotomyRequest(const std::string target);
+AForm*		createPresidentialPardon(const std::string target);
 
 #endif
