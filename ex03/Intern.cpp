@@ -6,7 +6,7 @@
 /*   By: yrigny <yrigny@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 15:47:56 by yrigny            #+#    #+#             */
-/*   Updated: 2024/10/09 16:45:41 by yrigny           ###   ########.fr       */
+/*   Updated: 2024/10/10 16:34:18 by yrigny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Intern&	Intern::operator=(const Intern& src)
 
 AForm*	Intern::makeForm(const std::string name, const std::string target)
 {
-	AForm*			form;
+	AForm*			form = NULL;
 	t_form_type		form_type = formType(name);
 	t_form_creator	creator_arr[] =
 	{
@@ -48,7 +48,7 @@ AForm*	Intern::makeForm(const std::string name, const std::string target)
 	if (form_type == NONE)
 	{
 		std::cout << "Intern couldn't create nonexisting form "
-		<< form->getName() << std::endl;
+		<< name << std::endl;
 		return NULL;
 	}
 	form = creator_arr[form_type](target);

@@ -6,7 +6,7 @@
 /*   By: yrigny <yrigny@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:44:18 by yrigny            #+#    #+#             */
-/*   Updated: 2024/10/08 23:09:21 by yrigny           ###   ########.fr       */
+/*   Updated: 2024/10/10 17:07:59 by yrigny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
+
 #define TITLE "\e[1;32m"
 #define COMMENT "\e[33m"
 #define NONE "\e[0m"
